@@ -51,8 +51,29 @@ firebase login
 firebase init
 firebase deploy --project one-time-password-f9af0 
 ```
+* Firebase project is comprised of:
+Data store -> Service Client -> function #1...n
+
+* *Service Client* has direct access to cloud functions. *Data Store* can have access to those via *Service Client*.
+
+```js
+// Make sure to get a private key before using this Service Account.
+const serviceAccount = require('./service-account.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://one-time-password-f9af0.firebaseio.com"
+});
+```
+
 
 ### Write Cloud Function to create a user
+
+```js
+// index.js
+const createUser = require('./create-user');
+exports.createUser = functions.https.onRequest(createUser);
+```
 ### Sign up for Twilio
 ### Write Function to generate and text a user
 
