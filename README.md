@@ -73,8 +73,16 @@ admin.initializeApp({
 // index.js
 const createUser = require('./create-user');
 exports.createUser = functions.https.onRequest(createUser);
+
+// create-user.js
+// Create a new user account using that phone number
+admin.auth().createUser({ uid: phone })
+.then(user => response.send(user))
+.catch(err => response.status(422).send({ error: err }));
 ```
 ### Sign up for Twilio
+
+
 ### Write Function to generate and text a user
 
 ### Source

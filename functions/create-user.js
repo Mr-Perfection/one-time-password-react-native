@@ -13,7 +13,7 @@ module.exports = (request, response) => {
   }
 
   // Create a new user account using that phone number
-  admin.auth.createUser({ uid: phone })
+  admin.auth().createUser({ uid: phone })
   .then(user => response.send(user))
   .catch(err => response.status(422).send({ error: err }));
   // Respond to the user's request, saying the account was made.
