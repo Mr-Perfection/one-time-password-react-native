@@ -81,7 +81,13 @@ admin.auth().createUser({ uid: phone })
 .catch(err => response.status(422).send({ error: err }));
 ```
 ### Sign up for Twilio
+```bash
+npm install --save twilio@3.0.0-rc.13 # install twilio client
+```
 
+```js
+// twilio.js
+```
 
 ### Write Function to generate and text a user
 
