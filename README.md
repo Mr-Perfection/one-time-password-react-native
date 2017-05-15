@@ -87,9 +87,29 @@ npm install --save twilio@3.0.0-rc.13 # install twilio client
 
 ```js
 // twilio.js
+import { ACCOUNT_SID, AUTH_TOKEN } from './twilio-keys';
+
+const twilio = require('twilio');
+
+module.exports = twilio.Twillo(ACCOUNT_SID, AUTH_TOKEN);
+
+admin.auth().getUser(phone)
+.then(userRecord => {
+  const code = Math.floor((Math.random() * 8999) + 1000);
+
+  twilio.messages.create({
+    body: `your code is + ${code}`,
+    to: phone,
+    from: '+19499545308'
+  });
+})
+.catch((err) => {
+  response.status(422).send({ error: err });
+});
 ```
 
 ### Write Function to generate and text a user
+Check out [this file](functions/request-one-time-password.js)
 
 ### Source
 [Stephen Grider's React Native](https://www.udemy.com/react-native-advanced)
