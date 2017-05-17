@@ -1,4 +1,4 @@
-const keys = require('./twilio-keys');
+const { ACCOUNT_SID, AUTH_TOKEN } = require('./twilio-keys');
 const twilio = require('twilio');
 
-module.exports = twilio.Twilio(keys.ACCOUNT_SID, keys.AUTH_TOKEN);
+module.exports = new twilio.Twilio(ACCOUNT_SID, AUTH_TOKEN);
